@@ -4,10 +4,9 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { PlusIcon } from "lucide-react";
+import UploadDropzone from "./UploadDropzone";
 
-type Props = {};
-
-const UploadButton = (props: Props) => {
+const UploadButton = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -26,7 +25,9 @@ const UploadButton = (props: Props) => {
         </Button>
       </DialogTrigger>
 
-      <DialogContent>example content</DialogContent>
+      <DialogContent>
+        <UploadDropzone />
+      </DialogContent>
     </Dialog>
   );
 };
