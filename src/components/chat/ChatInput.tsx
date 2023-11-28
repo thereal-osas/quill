@@ -1,5 +1,7 @@
 import React from "react";
 import { Textarea } from "../ui/textarea";
+import { Send } from "lucide-react";
+import { Button } from "../ui/button";
 
 type Props = {
   isDisabled?: boolean;
@@ -15,8 +17,17 @@ const ChatInput = ({ isDisabled }: Props) => {
               <Textarea
                 rows={1}
                 maxRows={4}
+                autoFocus
                 placeholder="Enter your question..."
+                className="pr-12 resize-none text-base py-3 scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
               />
+
+              <Button
+                className="absolute bottom-1.5 right-[8px]"
+                aria-label="send message"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
             </div>
           </div>
         </div>
