@@ -4,10 +4,11 @@ import { buttonVariants } from "./ui/button";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import UserAccountNav from "./UserAccountNav";
+import MobileNav from "./MobileNav";
 
 const Navbar = async () => {
   const { getUser } = getKindeServerSession();
-  const user = await getUser();
+  const user = getUser();
 
   return (
     <nav
@@ -19,7 +20,7 @@ const Navbar = async () => {
             <span>quill.</span>
           </Link>
 
-          {/* todo: add mobile navbar */}
+          <MobileNav isAuth={!!user} />
 
           <div className="hidden items-center space-x-4 sm:flex">
             {!user ? (

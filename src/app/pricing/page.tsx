@@ -12,11 +12,10 @@ import { cn } from "@/lib/utils";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ArrowRight, Check, HelpCircle, Minus } from "lucide-react";
 import Link from "next/link";
-import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const Page = async () => {
   const { getUser } = getKindeServerSession();
-  const user = await getUser();
+  const user = getUser();
 
   const pricingItems = [
     {
@@ -174,8 +173,8 @@ const Page = async () => {
                   <div className="border-t border-gray-200" />
                   <div className="p-5">
                     {plan === "Free" ? (
-                      <RegisterLink
-                        // href={user ? "/dashboard" : "/sign-in"}
+                      <Link
+                        href={user ? "/dashboard" : "/sign-in"}
                         className={buttonVariants({
                           className: "w-full",
                           variant: "secondary",
@@ -183,19 +182,19 @@ const Page = async () => {
                       >
                         {user ? "Upgrade now" : "Sign up"}
                         <ArrowRight className="h-5 w-5 ml-1.5" />
-                      </RegisterLink>
+                      </Link>
                     ) : user ? (
                       <UpgradeButton />
                     ) : (
-                      <RegisterLink
-                        // href="/sign-in"
+                      <Link
+                        href="/sign-in"
                         className={buttonVariants({
                           className: "w-full",
                         })}
                       >
                         {user ? "Upgrade now" : "Sign up"}
                         <ArrowRight className="h-5 w-5 ml-1.5" />
-                      </RegisterLink>
+                      </Link>
                     )}
                   </div>
                 </div>
