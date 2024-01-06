@@ -82,7 +82,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
   return (
     <div className="w-full bg-white rounded-md shadow flex flex-col items-center">
       <div className="h-14 w-full border-b border-zinc-200 flex items-center justify-between px-2">
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center md:gap-1.5">
           <Button
             disabled={currPage <= 1}
             onClick={() => {
@@ -92,10 +92,10 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             variant="ghost"
             aria-label="previous page"
           >
-            <ChevronDown className="h-4 w-4" />
+            <ChevronDown className="h-4 w-4 -ml-2" />
           </Button>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 -ml-2 -mr-2">
             <Input
               {...register("page")}
               className={cn(
@@ -125,14 +125,18 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             variant="ghost"
             aria-label="next page"
           >
-            <ChevronUp className="h-4 w-4" />
+            <ChevronUp className="h-4 w-4 mr-4" />
           </Button>
         </div>
 
-        <div className="space-x-2">
+        <div className="flex -ml-11 md:space-x-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="gap-1.5" aria-label="zoom" variant="ghost">
+              <Button
+                className="gap-1.5 -mr-2"
+                aria-label="zoom"
+                variant="ghost"
+              >
                 <Search className="h-4 w-4" />
                 {scale * 100}%
                 <ChevronDown className="h-3 w-3 opacity-50" />
